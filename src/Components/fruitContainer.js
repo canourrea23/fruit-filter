@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
-// components 
-import Input from './Input'
-import List from './List'
 
-class fruitContainer extends Component {
+// Components
+import List from './List';
+import Input from './Input';
+
+class FruitContainer extends Component {
     constructor(props) {
         super()
         this.state = {
-            //initalize the fruit list to the full list passed into props
-            fruitsToDisplay: this.props.fruits,
+            // initalize the fruit list to the full list passed into props
+            fruitsToDisplay: props.fruits,
+            // initalize the filter value to empty string
             filterValue: ''
-
         };
     }
-    handleFilterChange = (evt) => {
-        evt.preventDefault();
-        let filterValue = evt.target.value;
-        // remove the fruits that dont contain filter value
-        const filterFruitList = this.props.fruits.filter(fruit => {
+
+    handleFilterChange = (e) => {
+        e.preventDefault();
+        let filterValue = e.target.value;
+        // Remove the fruits that don't contain the filter value
+        const filteredFruitList = this.props.fruits.filter(fruit => {
             return fruit.toLowerCase().includes(filterValue.toLowerCase());
+
+            // if (fruit.toLowerCase() === filterValue.toLowerCase()) {
+            //     return true;
+            // }
         })
+
         this.setState({ fruitsToDisplay: filteredFruitList, filterValue });
     }
-    render() {
-        // inside of input component, to access props, i will say props.value
-       // inside of input component, to access props, i will say props.fruits
 
+    render() {
+        // Inside of Input Component, to access props, I will say props.value
+        // Inside of List Component,h to access props, I will say props.fruits
+        console.log('---- state ----');
+        console.log(this.state.fruitsToDisplay);
+        console.log('---- props ----');
+        console.log(this.props.fruits);
         return (
             <div>
                 <Input value={this.state.filterValue} onChange={this.handleFilterChange}/>
@@ -33,7 +44,6 @@ class fruitContainer extends Component {
             </div>
         )
     }
-
 }
 
-export default fruitContainer
+export default FruitContainer;

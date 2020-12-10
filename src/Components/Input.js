@@ -5,6 +5,7 @@ class Input extends Component {
         super()
         this.state = {};
     }
+
     render() {
         return (
             <div>
@@ -13,7 +14,6 @@ class Input extends Component {
             </div>
         )
     }
-
 }
 
-export default Input
+export default Input;

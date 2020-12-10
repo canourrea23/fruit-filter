@@ -5,10 +5,12 @@ class List extends Component {
         super()
         this.state = {};
     }
+
     render() {
         const fruitItems = this.props.fruits.map((eachFruit, index) => {
-            return <li>{eachFruit}</li>
+            return <li key={index}>{eachFruit}</li>
         });
+
         return (
             <div>
                 <ul>
@@ -17,7 +19,6 @@ class List extends Component {
             </div>
         )
     }
-
 }
 
-export default List
+export default List;
